@@ -20,4 +20,13 @@ public class AuthorService {
 
 		return repo.findAll().stream().filter(patient -> id.equalsIgnoreCase(patient.getAuthId())).toList();
 	}
+	public void add(Author auth) {
+		repo.save(auth);
+		
+	}
+	
+	public Author update(Author auth) {
+		repo.findById(auth.getAuthId()).orElseThrow();
+		return repo.save(auth);
+	}
 }
